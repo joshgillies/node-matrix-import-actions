@@ -94,5 +94,4 @@ function Action(type, opts) {
   }, this);
 }
 
-exports.Action = Action;
-exports.setActionId = setActionId;
+module.exports = Action;

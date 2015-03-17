@@ -1,5 +1,5 @@
 var helpers = require('./helpers');
-var action = require('./');
+var Action = require('./');
 var test = require('tape');
 var tests = {
   add_path: {
@@ -96,7 +96,7 @@ test('join asset type with id', function(t) {
 test('create action ids', function(t) {
   Object.keys(tests).forEach(function(test) {
     t.deepEqual(
-      (action.Action(test, tests[test].opts)).action_id,
+      (Action(test, tests[test].opts)).action_id,
       tests[test].expected.action_id,
       test + ' action id'
     );
@@ -107,7 +107,7 @@ test('create action ids', function(t) {
 test('create actions', function(t) {
   Object.keys(tests).forEach(function(test) {
     t.deepEqual(
-      action.Action(test, tests[test].opts),
+      Action(test, tests[test].opts),
       tests[test].expected,
       'action \'' + test + '\' from Constructor object'
     );
