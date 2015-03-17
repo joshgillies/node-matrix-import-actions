@@ -1,0 +1,35 @@
+{
+  "name": "node-matrix-import-actions",
+  "version": "1.0.0",
+  "description": "Action specification for Squiz Matrix' \"Import Assets from XML Tool\".",
+  "main": "index.js",
+  "dependencies": {
+    "string-template": "^0.2.0"
+  },
+  "devDependencies": {
+    "tape": "^3.5.0"
+  },
+  "scripts": {
+    "test": "tape test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joshgillies/node-matrix-import-actions"
+  },
+  "keywords": [
+    "matrix",
+    "mysource",
+    "my",
+    "source",
+    "squiz",
+    "xml",
+    "import",
+    "actions"
+  ],
+  "author": "Josh Gillies <npm@joshgilli.es> (http://joshgilli.es/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joshgillies/node-matrix-import-actions/issues"
+  },
+  "homepage": "https://github.com/joshgillies/node-matrix-import-actions"
+}
