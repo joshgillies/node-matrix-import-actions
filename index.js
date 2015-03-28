@@ -78,7 +78,7 @@ function Action(type, opts) {
       properties.push('asset', 'value', 'link_type', 'is_dependant', 'is_exclusive', 'assetid', 'is_major');
       break;
     case 'set_attribute_value':
-      this.action_id = DEFAULTS.action_id.call(null, opts.attribute, opts.id);
+      this.action_id = DEFAULTS.action_id.call(null, opts.id, opts.attribute);
       properties.push('asset', 'attribute', 'value');
       break;
     case 'set_permission':

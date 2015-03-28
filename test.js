@@ -57,7 +57,7 @@ var tests = {
       value: 'Test Site'
     },
     expected: {
-      action_id: 'set_html_Site_1',
+      action_id: 'set_Site_1_html',
       action_type: 'set_attribute_value',
       asset: 1,
       attribute: 'html',
