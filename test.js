@@ -100,6 +100,7 @@ var tests = {
     opts: {
       assetId: 1,
       permission: 'read',
+      muteError: true,
       granted: true,
       userId: 7
     },
@@ -108,6 +109,7 @@ var tests = {
       action_type: 'set_permission',
       asset: 1,
       permission: 1,
+      mute_error: 1,
       granted: 1,
       userid: 7
     }

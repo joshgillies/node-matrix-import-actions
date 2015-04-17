@@ -60,6 +60,7 @@ function Action (type, opts) {
       LINKS[opts.link.toUpperCase()] ?
         LINKS[opts.link.toUpperCase()] : LINKS['TYPE_1']
       : opts.link || 1,
+    mute_error: opts.muteError ? 1 : 0, // ???
     parentid: opts.parentId || 1,
     path: opts.path, // web path
     permission: typeof opts.permission === 'string' ?
@@ -101,7 +102,7 @@ function Action (type, opts) {
       break
     case 'set_permission':
       this.action_id = DEFAULTS.action_id.call(null, opts.assetId, opts.permission, opts.userId)
-      properties.push('asset', 'permission', 'granted', 'userid')
+      properties.push('asset', 'permission', 'mute_error', 'granted', 'userid')
       break
     default:
       throw new Error('Unknown action type of \'' + type + '\'')

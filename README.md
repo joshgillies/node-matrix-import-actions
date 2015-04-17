@@ -95,6 +95,7 @@ A `set_permission` Action accepts an Object as it's second argument `opts` with 
 
   * `opts.assetId`
   * `opts.permission`
+  * `opts.muteError`
   * `opts.granted`
   * `opts.userId`
 
