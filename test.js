@@ -1,6 +1,6 @@
-var helpers = require('./helpers');
-var Action = require('./');
-var test = require('tape');
+var helpers = require('./helpers')
+var Action = require('.')
+var test = require('tape')
 var tests = {
   add_path: {
     opts: {
@@ -80,37 +80,37 @@ var tests = {
       userid: 7
     }
   }
-};
+}
 
-test('use shorthand helpers', function(t) {
-  t.equal(helpers.keyShorthand('add_path'), 'add_web_path', 'shorthand selector');
-  t.equal(helpers.keyShorthand('create_asset'), 'create_asset', 'passthrough when no shorthand is available');
-  t.end();
-});
+test('use shorthand helpers', function (t) {
+  t.equal(helpers.keyShorthand('add_path'), 'add_web_path', 'shorthand selector')
+  t.equal(helpers.keyShorthand('create_asset'), 'create_asset', 'passthrough when no shorthand is available')
+  t.end()
+})
 
-test('join asset type with id', function(t) {
-  t.equal(helpers.asset('Site', '1'), 'Site_1');
-  t.end();
-});
+test('join asset type with id', function (t) {
+  t.equal(helpers.asset('Site', '1'), 'Site_1')
+  t.end()
+})
 
-test('create action ids', function(t) {
-  Object.keys(tests).forEach(function(test) {
+test('create action ids', function (t) {
+  Object.keys(tests).forEach(function (test) {
     t.deepEqual(
       (Action(test, tests[test].opts)).action_id,
       tests[test].expected.action_id,
       test + ' action id'
-    );
-  });
-  t.end();
-});
+    )
+  })
+  t.end()
+})
 
-test('create actions', function(t) {
-  Object.keys(tests).forEach(function(test) {
+test('create actions', function (t) {
+  Object.keys(tests).forEach(function (test) {
     t.deepEqual(
       Action(test, tests[test].opts),
       tests[test].expected,
       'action \'' + test + '\' from Constructor object'
-    );
-  });
-  t.end();
-});
+    )
+  })
+  t.end()
+})

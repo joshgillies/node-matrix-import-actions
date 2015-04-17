@@ -1,41 +1,43 @@
-var helpers = require('./helpers');
-var actionId = helpers.actionId;
-var keyShorthand = helpers.keyShorthand;
+var helpers = require('./helpers')
+var actionId = helpers.actionId
+var keyShorthand = helpers.keyShorthand
 
 var ACTIONS = {
   add_web_path: actionId('add_{0}_path'),
   create_asset: actionId('create_{0}'),
   create_link: actionId('link_{0}_{1}_to_{2}', 3),
   set_attribute_value: actionId('set_{0}_{1}', 2),
+  set_metadata_value: actionId('set_{0}_metadata_field_{1}', 2),
   set_permission: actionId('set_permission_{0}_{1}_{2}', 3)
-};
+}
 
 var LINKS = {
   TYPE_1: 1,
   TYPE_2: 2,
   TYPE_3: 4,
   NOTICE: 8
-};
+}
 
 var PERMISSIONS = {
   READ: 1,
   WRITE: 2,
   ADMIN: 3
-};
-
-var PUBLIC_USER = 7;
-
-function setActionId(type) {
-  return function actionId() {
-    var args = Array.prototype.slice.call(arguments);
-    var action = ACTIONS[type];
-    return action.apply(null, args);
-  };
 }
 
-function Action(type, opts) {
-  if(!(this instanceof Action))
-    return new Action(type, opts);
+var PUBLIC_USER = 7
+
+function setActionId (type) {
+  return function actionId () {
+    var args = Array.prototype.slice.call(arguments)
+    var action = ACTIONS[type]
+    return action.apply(null, args)
+  }
+}
+
+function Action (type, opts) {
+  if (!(this instanceof Action)) {
+    return new Action(type, opts)
+  }
 
   var DEFAULTS = {
     action_id: setActionId(keyShorthand(type)),
@@ -60,38 +62,38 @@ function Action(type, opts) {
     type_code: opts.type,
     userid: opts.userId || PUBLIC_USER,
     value: opts.value || ''
-  };
+  }
 
-  var properties = ['action_type'];
+  var properties = ['action_type']
 
   switch (DEFAULTS.action_type) {
     case 'add_web_path':
-      this.action_id = DEFAULTS.action_id.call(null, opts.id);
-      properties.push('asset', 'path');
-      break;
+      this.action_id = DEFAULTS.action_id.call(null, opts.id)
+      properties.push('asset', 'path')
+      break
     case 'create_asset':
-      this.action_id = DEFAULTS.action_id.call(null, opts.id);
-      properties.push('type_code', 'parentid', 'value', 'link_type', 'is_dependant', 'is_exclusive');
-      break;
+      this.action_id = DEFAULTS.action_id.call(null, opts.id)
+      properties.push('type_code', 'parentid', 'value', 'link_type', 'is_dependant', 'is_exclusive')
+      break
     case 'create_link':
-      this.action_id = DEFAULTS.action_id.call(null, DEFAULTS.link_type, opts.to, opts.from);
-      properties.push('asset', 'value', 'link_type', 'is_dependant', 'is_exclusive', 'assetid', 'is_major');
-      break;
+      this.action_id = DEFAULTS.action_id.call(null, DEFAULTS.link_type, opts.to, opts.from)
+      properties.push('asset', 'value', 'link_type', 'is_dependant', 'is_exclusive', 'assetid', 'is_major')
+      break
     case 'set_attribute_value':
-      this.action_id = DEFAULTS.action_id.call(null, opts.id, opts.attribute);
-      properties.push('asset', 'attribute', 'value');
-      break;
+      this.action_id = DEFAULTS.action_id.call(null, opts.id, opts.attribute)
+      properties.push('asset', 'attribute', 'value')
+      break
     case 'set_permission':
-      this.action_id = DEFAULTS.action_id.call(null, opts.assetId, opts.permission, opts.userId);
-      properties.push('asset', 'permission', 'granted', 'userid');
-      break;
+      this.action_id = DEFAULTS.action_id.call(null, opts.assetId, opts.permission, opts.userId)
+      properties.push('asset', 'permission', 'granted', 'userid')
+      break
     default:
-      throw new Error('Unknown action type of \'' + type + '\'');
+      throw new Error('Unknown action type of \'' + type + '\'')
   }
 
-  properties.forEach(function assignDefaults(value) {
-    this[value] = DEFAULTS[value];
-  }, this);
+  properties.forEach(function assignDefaults (value) {
+    this[value] = DEFAULTS[value]
+  }, this)
 }
 
-module.exports = Action;
+module.exports = Action

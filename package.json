@@ -7,10 +7,11 @@
     "string-template": "^0.2.0"
   },
   "devDependencies": {
+    "standard": "^3.6.1",
     "tape": "^3.5.0"
   },
   "scripts": {
-    "test": "tape test.js"
+    "test": "standard && tape test.js"
   },
   "repository": {
     "type": "git",
