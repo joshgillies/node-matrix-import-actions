@@ -70,6 +70,25 @@ A `set_attribute` Action accepts an Object as it's second argument `opts` with t
   * `opts.attribute`
   * `opts.value`
 
+#### Action('set_metadata_schema', opts)
+
+A `set_metadata_schema` Action accepts an Object as it's second argument `opts` with the following properties:
+
+  * `opts.id`
+  * `opts.assetId`
+  * `opts.schemaId`
+  * `opts.granted`
+  * `opts.cascade`
+
+#### Action('set_metadata_value', opts)
+
+A `set_metadata_value` Action accepts an Object as it's second argument `opts` with the following properties:
+
+  * `opts.id`
+  * `opts.assetId`
+  * `opts.fieldId`
+  * `opts.value`
+
 #### Action('set_permission', opts)
 
 A `set_permission` Action accepts an Object as it's second argument `opts` with the following properties:

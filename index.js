@@ -7,6 +7,7 @@ var ACTIONS = {
   create_asset: actionId('create_{0}'),
   create_link: actionId('link_{0}_{1}_to_{2}', 3),
   set_attribute_value: actionId('set_{0}_{1}', 2),
+  set_metadata_schema: actionId('set_{0}_metadata_schema_{1}', 2),
   set_metadata_value: actionId('set_{0}_metadata_field_{1}', 2),
   set_permission: actionId('set_permission_{0}_{1}_{2}', 3)
 }
@@ -49,6 +50,8 @@ function Action (type, opts) {
     asset: opts.assetId || opts.from, // id of asset performing action against
     assetid: opts.to, // id of asset linking to
     attribute: keyShorthand(opts.attribute),
+    cascades: opts.cascade ? 1 : 0,
+    fieldid: opts.fieldId,
     granted: opts.granted ? 1 : 0,
     is_dependant: opts.dependant ? 1 : 0,
     is_exclusive: opts.exclusive ? 1 : 0,
@@ -63,6 +66,7 @@ function Action (type, opts) {
       PERMISSIONS[opts.permission.toUpperCase()] ?
         PERMISSIONS[opts.permission.toUpperCase()] : PERMISSIONS['READ']
       : opts.permission || 1,
+    schemaid: opts.schemaId,
     type_code: opts.type,
     userid: opts.userId || PUBLIC_USER,
     value: opts.value || ''
@@ -86,6 +90,14 @@ function Action (type, opts) {
     case 'set_attribute_value':
       this.action_id = DEFAULTS.action_id.call(null, opts.id, opts.attribute)
       properties.push('asset', 'attribute', 'value')
+      break
+    case 'set_metadata_schema':
+      this.action_id = DEFAULTS.action_id.call(null, opts.id, opts.schemaId)
+      properties.push('asset', 'schemaid', 'granted', 'cascades')
+      break
+    case 'set_metadata_value':
+      this.action_id = DEFAULTS.action_id.call(null, opts.id, opts.fieldId)
+      properties.push('asset', 'fieldid', 'value')
       break
     case 'set_permission':
       this.action_id = DEFAULTS.action_id.call(null, opts.assetId, opts.permission, opts.userId)
