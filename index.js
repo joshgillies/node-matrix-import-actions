@@ -15,7 +15,11 @@ var LINKS = {
   TYPE_1: 1,
   TYPE_2: 2,
   TYPE_3: 4,
-  NOTICE: 8
+  NOTICE: 8,
+  1: 'type_1',
+  2: 'type_2',
+  4: 'type_3',
+  8: 'notice'
 }
 
 var PERMISSIONS = {
@@ -76,7 +80,7 @@ function Action (type, opts) {
       properties.push('type_code', 'parentid', 'value', 'link_type', 'is_dependant', 'is_exclusive')
       break
     case 'create_link':
-      this.action_id = DEFAULTS.action_id.call(null, DEFAULTS.link_type, opts.to, opts.from)
+      this.action_id = DEFAULTS.action_id.call(null, LINKS[DEFAULTS.link_type], opts.to, opts.from)
       properties.push('asset', 'value', 'link_type', 'is_dependant', 'is_exclusive', 'assetid', 'is_major')
       break
     case 'set_attribute_value':

@@ -1,5 +1,5 @@
 var helpers = require('./helpers')
-var Action = require('.')
+var Action = require('./')
 var test = require('tape')
 var tests = {
   add_path: {
@@ -38,7 +38,7 @@ var tests = {
       from: 1
     },
     expected: {
-      action_id: 'link_1_2_to_1',
+      action_id: 'link_type_1_2_to_1',
       action_type: 'create_link',
       asset: 1,
       assetid: 2,
