@@ -3,6 +3,7 @@
 Action specification for Squiz Matrix' "[Import Assets from XML Tool]".
 
 [![Build Status](https://travis-ci.org/joshgillies/node-matrix-import-actions.svg)](https://travis-ci.org/joshgillies/node-matrix-import-actions)
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
 
 ## Example
 
