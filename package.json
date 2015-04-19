@@ -1,6 +1,6 @@
 {
   "name": "node-matrix-import-actions",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Action specification for Squiz Matrix' \"Import Assets from XML Tool\".",
   "main": "index.js",
   "dependencies": {
