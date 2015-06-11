@@ -8,6 +8,7 @@ var ACTIONS = {
   create_file_asset: actionId('create_{0}'),
   create_link: actionId('link_{0}_{1}_to_{2}', 3),
   set_attribute_value: actionId('set_{0}_{1}', 2),
+  set_design_parse_file: actionId('set_{0}_parse_file'),
   set_metadata_schema: actionId('set_{0}_metadata_schema_{1}', 2),
   set_metadata_value: actionId('set_{0}_metadata_field_{1}', 2),
   set_permission: actionId('set_permission_{0}_{1}_{2}', 3)
@@ -97,6 +98,10 @@ function Action (type, opts) {
     case 'set_attribute_value':
       this.action_id = DEFAULTS.action_id.call(null, opts.id, opts.attribute)
       properties.push('asset', 'attribute', 'value')
+      break
+    case 'set_design_parse_file':
+      this.action_id = DEFAULTS.action_id.call(null, opts.id)
+      properties.push('asset', 'file_path')
       break
     case 'set_metadata_schema':
       this.action_id = DEFAULTS.action_id.call(null, opts.id, opts.schemaId)

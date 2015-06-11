@@ -83,6 +83,19 @@ var tests = {
       value: 'Test Site'
     }
   },
+  set_design_parse_file: {
+    opts: {
+      id: 'Design_1',
+      assetId: 1,
+      file: '/test.txt'
+    },
+    expected: {
+      action_id: 'set_Design_1_parse_file',
+      action_type: 'set_design_parse_file',
+      asset: 1,
+      file_path: '/test.txt'
+    }
+  },
   set_metadata_schema: {
     opts: {
       id: 'Site_1',

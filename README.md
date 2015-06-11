@@ -84,6 +84,14 @@ A `set_attribute` Action accepts an Object as it's second argument `opts` with t
   * `opts.attribute`
   * `opts.value`
 
+#### Action('set_design_parse_file', opts)
+
+A `set_design_parse_file` Action accepts an Object as it's second argument `opts` with the following properties:
+
+  * `opts.id`
+  * `opts.assetId`
+  * `opts.file`
+
 #### Action('set_metadata_schema', opts)
 
 A `set_metadata_schema` Action accepts an Object as it's second argument `opts` with the following properties:
