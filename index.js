@@ -5,6 +5,7 @@ var keyShorthand = helpers.keyShorthand
 var ACTIONS = {
   add_web_path: actionId('add_{0}_path'),
   create_asset: actionId('create_{0}'),
+  create_file_asset: actionId('create_{0}'),
   create_link: actionId('link_{0}_{1}_to_{2}', 3),
   set_attribute_value: actionId('set_{0}_{1}', 2),
   set_metadata_schema: actionId('set_{0}_metadata_schema_{1}', 2),
@@ -52,6 +53,7 @@ function Action (type, opts) {
     attribute: keyShorthand(opts.attribute),
     cascades: opts.cascade ? 1 : 0,
     fieldid: opts.fieldId,
+    file_path: opts.file || '',
     granted: opts.granted ? 1 : 0,
     is_dependant: opts.dependant ? 1 : 0,
     is_exclusive: opts.exclusive ? 1 : 0,
@@ -83,6 +85,10 @@ function Action (type, opts) {
     case 'create_asset':
       this.action_id = DEFAULTS.action_id.call(null, opts.id)
       properties.push('type_code', 'parentid', 'value', 'link_type', 'is_dependant', 'is_exclusive')
+      break
+    case 'create_file_asset':
+      this.action_id = DEFAULTS.action_id.call(null, opts.id)
+      properties.push('file_path', 'type_code', 'parentid', 'value', 'link_type', 'is_dependant', 'is_exclusive')
       break
     case 'create_link':
       this.action_id = DEFAULTS.action_id.call(null, LINKS[DEFAULTS.link_type], opts.to, opts.from)

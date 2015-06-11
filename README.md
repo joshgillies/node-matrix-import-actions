@@ -50,6 +50,19 @@ A `create_asset` Action accepts an Object as it's second argument `opts` with th
   * `opts.dependant`
   * `opts.exclusive`
 
+#### Action('create_file_asset', opts)
+
+A `create_file_asset` Action accepts an Object as it's second argument `opts` with the following properties:
+
+  * `opts.id`
+  * `opts.parentId`
+  * `opts.file`
+  * `opts.type`
+  * `opts.link`
+  * `opts.value`
+  * `opts.dependant`
+  * `opts.exclusive`
+
 #### Action('create_link', opts)
 
 A `create_link` Action accepts an Object as it's second argument `opts` with the following properties:

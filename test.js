@@ -32,6 +32,25 @@ var tests = {
       is_exclusive: 0
     }
   },
+  create_file_asset: {
+    opts: {
+      id: 'Image_1',
+      parentId: 1,
+      type: 'image',
+      file: '/images/pic.jpg'
+    },
+    expected: {
+      action_id: 'create_Image_1',
+      action_type: 'create_file_asset',
+      type_code: 'image',
+      file_path: '/images/pic.jpg',
+      parentid: 1,
+      value: '',
+      link_type: 1,
+      is_dependant: 0,
+      is_exclusive: 0
+    }
+  },
   create_link: {
     opts: {
       to: 2,
