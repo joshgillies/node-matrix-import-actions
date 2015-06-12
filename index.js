@@ -135,9 +135,10 @@ function Action (type, opts) {
       throw new Error('Unknown action type of \'' + type + '\'')
   }
 
-  properties.forEach(function assignDefaults (value) {
-    this[value] = DEFAULTS[value]
-  }, this)
+  for (var i = 0, len = properties.length, key; i < len; i++) {
+    key = properties[i]
+    this[key] = DEFAULTS[key]
+  }
 }
 
 module.exports = Action
