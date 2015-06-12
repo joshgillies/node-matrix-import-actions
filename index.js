@@ -1,6 +1,4 @@
-var helpers = require('./helpers')
-var actionId = helpers.actionId
-var keyShorthand = helpers.keyShorthand
+var format = require('string-template')
 
 var ACTIONS = {
   add_web_path: actionId('add_{0}_path'),
@@ -33,6 +31,24 @@ var PERMISSIONS = {
 
 var PUBLIC_USER = 7
 
+function actionId (template, expected) {
+  return function formatter () {
+    var args = Array.prototype.slice.call(arguments)
+
+    expected = expected || 1
+
+    if (args.length !== expected) {
+      throw new Error('Expected ' + expected + ' arguments instead got ' + args.length)
+    }
+
+    if (args.indexOf(undefined) >= 0) {
+      throw new Error('Undefined must not be passed to format function')
+    }
+
+    return format(template, args)
+  }
+}
+
 function setActionId (type) {
   return function actionId () {
     var args = Array.prototype.slice.call(arguments)
@@ -47,11 +63,11 @@ function Action (type, opts) {
   }
 
   var DEFAULTS = {
-    action_id: setActionId(keyShorthand(type)),
-    action_type: keyShorthand(type),
+    action_id: setActionId(type),
+    action_type: type,
     asset: opts.assetId || opts.from, // id of asset performing action against
     assetid: opts.to, // id of asset linking to
-    attribute: keyShorthand(opts.attribute),
+    attribute: opts.attribute,
     cascades: opts.cascade ? 1 : 0,
     fieldid: opts.fieldId,
     file_path: opts.file || '',

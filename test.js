@@ -1,8 +1,7 @@
-var helpers = require('./helpers')
 var Action = require('./')
 var test = require('tape')
 var tests = {
-  add_path: {
+  add_web_path: {
     opts: {
       id: 'Site_1',
       path: 'test-site',
@@ -68,7 +67,7 @@ var tests = {
       value: ''
     }
   },
-  set_attribute: {
+  set_attribute_value: {
     opts: {
       id: 'Site_1',
       assetId: 1,
@@ -147,17 +146,6 @@ var tests = {
     }
   }
 }
-
-test('use shorthand helpers', function (t) {
-  t.equal(helpers.keyShorthand('add_path'), 'add_web_path', 'shorthand selector')
-  t.equal(helpers.keyShorthand('create_asset'), 'create_asset', 'passthrough when no shorthand is available')
-  t.end()
-})
-
-test('join asset type with id', function (t) {
-  t.equal(helpers.asset('Site', '1'), 'Site_1')
-  t.end()
-})
 
 test('create action ids', function (t) {
   Object.keys(tests).forEach(function (test) {
