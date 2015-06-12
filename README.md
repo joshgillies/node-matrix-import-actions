@@ -30,7 +30,7 @@ An action is a task performed against a Squiz Matrix system.
 
 `type` is a String representing the type of action. The following types are available:
 
-#### Action('add_path', opts)
+#### Action('add_web_path', opts)
 
 A `add_path` Action accepts an Object as it's second argument `opts` with the following properties:
 
@@ -75,7 +75,7 @@ A `create_link` Action accepts an Object as it's second argument `opts` with the
   * `opts.exclusive`
   * `opts.major`
 
-#### Action('set_attribute', opts)
+#### Action('set_attribute_value', opts)
 
 A `set_attribute` Action accepts an Object as it's second argument `opts` with the following properties:
 
